@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: books-api-db
+    environment:
+      MYSQL_ROOT_PASSWORD: books-api
+      MYSQL_DATABASE: books-api
+      MYSQL_USER: books-api
+      MYSQL_PASSWORD: books-api
+    ports:
+      - "3308:3306"
+    volumes:
+      - books_api_data:/var/lib/mysql
+    networks:
+      - books_api_network
+
+volumes:
+  books_api_data:
+    driver: local
+
+networks:
+  books_api_network:
+    driver: bridge

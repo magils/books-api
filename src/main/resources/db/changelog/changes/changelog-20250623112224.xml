@@ -1,0 +1,79 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="mgil (generated)" id="1750677749356-1">
+        <createTable tableName="authors">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="authorsPK"/>
+            </column>
+            <column name="bio" type="VARCHAR(255)"/>
+            <column name="lastName" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mgil (generated)" id="1750677749356-2">
+        <createTable tableName="books">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="booksPK"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="isbn" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="pages" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="publicationDate" type="datetime(6)"/>
+            <column name="publisher_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mgil (generated)" id="1750677749356-3">
+        <createTable tableName="books_authors">
+            <column name="book_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="books_authorsPK"/>
+            </column>
+            <column name="author_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="books_authorsPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mgil (generated)" id="1750677749356-4">
+        <createTable tableName="books_genres">
+            <column name="book_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="books_genresPK"/>
+            </column>
+            <column name="genre_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="books_genresPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mgil (generated)" id="1750677749356-5">
+        <createTable tableName="genres">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="genresPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mgil (generated)" id="1750677749356-6">
+        <createTable tableName="publishers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="publishersPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mgil (generated)" id="1750677749356-7">
+        <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="books_authors" constraintName="FK1b933slgixbjdslgwu888m34v" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="books" validate="true"/>
+    </changeSet>
+    <changeSet author="mgil (generated)" id="1750677749356-8">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="books_authors" constraintName="FK3qua08pjd1ca1fe2x5cgohuu5" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="authors" validate="true"/>
+    </changeSet>
+    <changeSet author="mgil (generated)" id="1750677749356-9">
+        <addForeignKeyConstraint baseColumnNames="publisher_id" baseTableName="books" constraintName="FKayy5edfrqnegqj3882nce6qo8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="publishers" validate="true"/>
+    </changeSet>
+    <changeSet author="mgil (generated)" id="1750677749356-10">
+        <addForeignKeyConstraint baseColumnNames="genre_id" baseTableName="books_genres" constraintName="FKgkat05y2cec3tcpl6ur250sd0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="genres" validate="true"/>
+    </changeSet>
+    <changeSet author="mgil (generated)" id="1750677749356-11">
+        <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="books_genres" constraintName="FKlv42b6uemg63q27om39jjbt9o" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="books" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

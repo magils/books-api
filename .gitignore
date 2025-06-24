@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Liquibase ###
+src/main/resources/liquibase.properties

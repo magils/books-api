@@ -21,6 +21,7 @@ public class Book {
     private String isbn;
     private int pages;
     private String description;
+    @Column(name = "publication_date")
     private Date publicationDate;
 
     // Relationships

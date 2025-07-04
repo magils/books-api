@@ -1,3 +1,7 @@
 spring:
   application:
     name: books-api
+  datasource:
+    url: jdbc:mysql://localhost:3308/books-api
+    username: books-api
+    password: books-api

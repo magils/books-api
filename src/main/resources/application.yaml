@@ -5,3 +5,11 @@ spring:
     url: jdbc:mysql://localhost:3308/books-api
     username: books-api
     password: books-api
+  liquibase:
+    enabled: false
+    change-log: db/changelog/db.changelog-master.xml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
